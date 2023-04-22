@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class OptionsController extends Controller
+class OptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class OptionsController extends Controller
     {
         $options = Option::paginate(1);
 
-        return View('admin.options.index', ['options' => $options]);
+        return View('admin.option.index', ['options' => $options]);
     }
 
     /**
@@ -28,7 +28,7 @@ class OptionsController extends Controller
      */
     public function create (): View
     {
-        return View('admin.options.create', ['option'=>new Option()]);
+        return View('admin.option.create', ['option'=>new Option()]);
     }
 
     /**
@@ -39,7 +39,7 @@ class OptionsController extends Controller
     public function store (StoreOptionRequest $request): RedirectResponse
     {
         $option = Option::create($request->validated());
-        return redirect()->route('admin.options.show', ['option' => $option]);
+        return redirect()->route('admin.option.show', ['option' => $option]);
     }
 
     /**
@@ -49,7 +49,7 @@ class OptionsController extends Controller
      */
     public function show (Option $option): View
     {
-        return View('admin.options.show', ['option' => $option]);
+        return View('admin.option.show', ['option' => $option]);
     }
 
     /**
@@ -59,7 +59,7 @@ class OptionsController extends Controller
      */
     public function edit(Option $option): View
     {
-        return View('admin.options.edit', ['option' => $option]);
+        return View('admin.option.edit', ['option' => $option]);
     }
 
     /**
@@ -71,7 +71,7 @@ class OptionsController extends Controller
     public function update(UpdateOptionRequest $request, Option $option): RedirectResponse
     {
         $option->update($request->validated());
-        return redirect()->route('admin.options.show', ['option' => $option]);
+        return redirect()->route('admin.option.show', ['option' => $option]);
     }
 
     /**
@@ -80,6 +80,6 @@ class OptionsController extends Controller
      */
     public function destroy(): RedirectResponse
     {
-        return redirect()->route('admin.options.index');
+        return redirect()->route('admin.option.index');
     }
 }
