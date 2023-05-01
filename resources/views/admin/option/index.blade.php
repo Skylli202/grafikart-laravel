@@ -20,12 +20,12 @@
 		@php /** @var App\Models\Option $option */ @endphp
 		@foreach($options as $option)
 			<tr>
-				<th scope="row">{{ $option->id }}</th>
+				<td scope="row">{{ $option->id }}</td>
 				<td class="w-75">{{ $option->name }}</td>
 				<td>
 					<a
-							href="{{ route('admin.options.edit', ['option' => $option]) }}"
-							class="btn btn-secondary"
+						href="{{ route('admin.options.edit', ['option' => $option]) }}"
+						class="btn btn-secondary"
 					>
 						Edit
 					</a>
