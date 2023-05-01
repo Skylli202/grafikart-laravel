@@ -11,15 +11,28 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class RealEstate extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    public function options(): BelongsToMany
-    {
-        return $this->belongsToMany(
-            RealEstate::class,
-            'option_real_estate',
-            'option_id',
-            'real_estate_id'
-        );
-    }
+	protected $fillable = [
+		'title',
+		'surface',
+		'price',
+		'description',
+		'rooms',
+		'bedrooms',
+		'floor',
+		'address',
+		'city',
+		'zipcode',
+	];
+
+	public function options(): BelongsToMany
+	{
+		return $this->belongsToMany(
+			RealEstate::class,
+			'option_real_estate',
+			'option_id',
+			'real_estate_id'
+		);
+	}
 }
